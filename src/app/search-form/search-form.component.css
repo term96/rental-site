@@ -1,0 +1,61 @@
+form {
+  padding: 10px 0;
+  text-align: center;
+}
+
+label {
+  display: inline-block;
+  margin: 0 10px;
+  width: 100%;
+}
+
+span {
+  display: block;
+  margin: 0.5em 0;
+}
+
+input {
+  color: #777;
+  font-family: inherit;
+  font-size: inherit;
+  box-sizing: border-box;
+  border: solid 1px transparent;
+  border-radius: 5px;
+  padding: 0.35em;
+}
+
+input:focus {
+  border-color: red;
+  outline: none;
+}
+
+.addresses,
+.dates {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.addresses input {
+  width: 300px;
+}
+
+.dates label input:first-of-type {
+  margin-right: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  form {
+    text-align: left;
+  }
+
+  label {
+    width: 45%;
+    width: calc(50% - 20px);
+    max-width: 300px;
+  }
+
+  .addresses input {
+    width: 100%;
+  }
+}
