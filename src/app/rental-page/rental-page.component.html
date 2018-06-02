@@ -1,4 +1,7 @@
 <div class="root">
-  <app-search-form></app-search-form>
-  <div class="search-result" [ngClass]="{'d': false}">Результат поиска</div>
+  <app-search-form (result)="onSearchResult($event)"></app-search-form>
+  <div class="search-result" [ngSwitch]="searchSucceed">
+    <span *ngSwitchCase="true">Поиск прошёл успешно</span>
+    <span *ngSwitchCase="false">Ошибка при поиске</span>
+  </div>
 </div>
