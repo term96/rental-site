@@ -1,4 +1,5 @@
 form {
+  display: inline-block;
   padding: 10px 0;
   text-align: center;
 }
@@ -44,15 +45,35 @@ input:focus {
   margin-right: 10px;
 }
 
+.submit {
+  margin: 10px;
+  padding: 0.5em 0.7em;
+  background: #900;
+  color: #fff;
+  border: none;
+  box-shadow: none;
+  transition: box-shadow 0.25s;
+}
+
+.submit:hover {
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+
+.submit:active {
+  box-shadow: inset 0 0 1em rgba(0, 0, 0, 0.75);
+}
+
 @media screen and (min-width: 768px) {
   form {
     text-align: left;
   }
 
   label {
-    width: 45%;
+    /* width: 45%;
     width: calc(50% - 20px);
-    max-width: 300px;
+    max-width: 300px; */
+    width: 364px;
   }
 
   .addresses input {
