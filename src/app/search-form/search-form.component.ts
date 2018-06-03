@@ -24,6 +24,9 @@ export class SearchFormComponent implements OnInit {
     min: moment()
   }
   private readonly requiredFieldMessage = "Это поле обязательное";
+  private readonly showOptionsMessage = "Показать дополнительные опции";
+  private readonly hideOptionsMessage = "Скрыть дополнительные опции";
+  private optionsToggled: boolean = false;
   private searchForm: FormGroup;
 
   constructor(private dataService: DataService, private httpService: HttpService) {}
@@ -73,6 +76,10 @@ export class SearchFormComponent implements OnInit {
         this.searchFinished.emit(false);
       }
     );
+  }
+
+  private toggleOptions() {
+    this.optionsToggled = !this.optionsToggled;
   }
 
   private showErrors() {

@@ -6,24 +6,27 @@
       <span *ngIf="pickUpAddress.dirty && pickUpAddress.invalid" class="error">{{ requiredFieldMessage }}</span>
     </div>
     <div class="address">
-        <div class="label-wrapper"><label for="drop-off-address">Адрес возврата</label></div>
+      <div class="label-wrapper"><label for="drop-off-address">Адрес возврата</label></div>
       <input id="drop-off-address" placeholder='Введите адрес' formControlName="dropOffAddress" />
       <span *ngIf="dropOffAddress.dirty && dropOffAddress.invalid" class="error">{{ requiredFieldMessage }}</span>
     </div>
   </div>
   <div class="dates">
     <div class="date">
-        <div class="label-wrapper"><label for="pick-up-date">Дата аренды</label></div>
+      <div class="label-wrapper"><label for="pick-up-date">Дата аренды</label></div>
       <input id="pick-up-date" mode="daytime" theme="dp-material" formControlName="pickUpDate" [dpDayPicker]="datePickerConfig" [readonly]="true" placeholder="Выберите дату" />
       <span *ngIf="pickUpDate.dirty && pickUpDate.invalid" class="error">{{ requiredFieldMessage }}</span>
     </div>
     <div class="date">
-        <div class="label-wrapper"><label for="drop-off-date">Дата возврата</label></div>
+      <div class="label-wrapper"><label for="drop-off-date">Дата возврата</label></div>
       <input id="drop-off-date" mode="daytime" theme="dp-material" formControlName="dropOffDate" [dpDayPicker]="datePickerConfig" [readonly]="true" placeholder="Выберите дату" />
       <span *ngIf="dropOffDate.dirty && dropOffDate.invalid" class="error">{{ requiredFieldMessage }}</span>
     </div>
   </div>
-  <div class="optional">
+  <div class="options-toggle" [ngClass]="{ 'toggled': optionsToggled }">
+    <a href="#" (click)="toggleOptions()">{{ optionsToggled ? hideOptionsMessage : showOptionsMessage }}</a>
+  </div>
+  <div class="options" *ngIf="optionsToggled">
     <div class="option">
       <div class="label-wrapper"><label for="car-type">Тип автомобиля</label></div>
       <select id="car-type" formControlName="carType">
