@@ -1,25 +1,28 @@
-<form>
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" novalidate>
   <div class="addresses">
     <label>
-      <span>Picking up</span>
-      <input placeholder='Try "New York"' required />
+      <span>Адрес аренды</span>
+      <input placeholder='Например, "New York"' formControlName="pickUpAddress" />
+      <span *ngIf="pickUpAddress.dirty && pickUpAddress.errors && pickUpAddress.errors.required" class="error">Это поле обязательное</span>
+      <span *ngIf="pickUpAddress.dirty && pickUpAddress.errors && pickUpAddress.errors.minlength" class="error">Адрес должен быть не меньше {{ minAddressLength }} символов</span>
     </label>
     <label>
-      <span>Dropping off</span>
-      <input placeholder='Same as pick-up' required />
+      <span>Адрес возврата</span>
+      <input placeholder='Такой же, как адрес аренды' formControlName="dropOffAddress" />
+      <span *ngIf="dropOffAddress.dirty && dropOffAddress.invalid" class="error">Адрес должен быть не меньше {{ minAddressLength }} символов</span>
     </label>
   </div>
   <div class="dates">
     <label>
-      <span>Pick-up date</span>
-      <input type="date" />
+      <span>Дата аренды</span>
+      <input type="date" value="{{ '2018-06-14' }}"/>
       <input type="time" />
     </label>
     <label>
-      <span>Drop-off date</span>
+      <span>Дата возврата</span>
       <input type="date" />
       <input type="time" />
     </label>
   </div>
-  <input class="submit" type="submit" value="Search" (click)="onSubmit($event)" />
+  <input class="submit" type="submit" value="Искать" />
 </form>

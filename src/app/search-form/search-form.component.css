@@ -15,6 +15,10 @@ span {
   margin: 0.5em 0;
 }
 
+span.error {
+  color: #c00;
+}
+
 input {
   color: #777;
   font-family: inherit;

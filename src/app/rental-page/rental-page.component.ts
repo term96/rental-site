@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class RentalPageComponent {
   searchSucceed?: boolean;
 
-  onSearchResult(searchSucceed: boolean): void {
+  onSearchFinished(searchSucceed: boolean): void {
     this.searchSucceed = searchSucceed;
   }
 }

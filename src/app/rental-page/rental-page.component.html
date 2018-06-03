@@ -1,5 +1,5 @@
 <div class="root">
-  <app-search-form (result)="onSearchResult($event)"></app-search-form>
+  <app-search-form (searchFinished)="onSearchFinished($event)"></app-search-form>
   <div class="search-result" [ngSwitch]="searchSucceed">
     <span *ngSwitchCase="true">Поиск прошёл успешно</span>
     <span *ngSwitchCase="false">Ошибка при поиске</span>
