@@ -26,28 +26,28 @@
   <div class="optional">
     <div class="option">
       <div class="label-wrapper"><label for="car-type">Тип автомобиля</label></div>
-      <select id="car-type">
-        <option disabled>Тип не выбран</option>
+      <select id="car-type" formControlName="carType">
+        <option value="">Тип не выбран</option>
         <option *ngFor="let type of dataService.getCarTypes()" [value]="type">{{ type }}</option>
       </select>
     </div>
     <div class="option">
       <div class="label-wrapper"><label for="car-rental-company">Компания-арендодатель</label></div>
-      <select id="car-rental-company">
-        <option disabled>Компания не выбрана</option>
+      <select id="car-rental-company" formControlName="carRentalCompany">
+        <option value="">Компания не выбрана</option>
         <option *ngFor="let type of dataService.getCarRentalCompanies()" [value]="type">{{ type }}</option>
       </select>
     </div>
     <div class="option">
-      <div class="label-wrapper"><label for="discount-code-toggler">Код скидки</label></div>
-      <select id="discount-code-toggler">
-        <option value="no">У меня нет кода</option>
+      <div class="label-wrapper"><label for="has-discount-code">Код скидки</label></div>
+      <select id="has-discount-code" formControlName="hasDiscountCode">
+        <option value="">У меня нет кода</option>
         <option value="yes">У меня есть код</option>
       </select>
     </div>
-    <div class="option">
+    <div class="option" *ngIf="hasDiscountCode.value">
         <div class="label-wrapper"><label for="discount-code">Код</label></div>
-        <input id="discount-code" size="15" placeholder="Код" />
+        <input id="discount-code" size="15" placeholder="Код" formControlName="discountCode" />
       </div>
   </div>
   <input class="submit" type="submit" value="Искать" />

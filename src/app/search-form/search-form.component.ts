@@ -33,7 +33,11 @@ export class SearchFormComponent implements OnInit {
       pickUpAddress: new FormControl(null, Validators.required),
       dropOffAddress: new FormControl(null, Validators.required),
       pickUpDate: new FormControl(null, Validators.required),
-      dropOffDate: new FormControl(null, Validators.required)
+      dropOffDate: new FormControl(null, Validators.required),
+      carType: new FormControl(""),
+      carRentalCompany: new FormControl(""),
+      hasDiscountCode: new FormControl(""),
+      discountCode: new FormControl("")
     })
   }
 
@@ -48,6 +52,9 @@ export class SearchFormComponent implements OnInit {
   }
   private get dropOffDate(): FormControl {
     return this.searchForm.controls.dropOffDate as FormControl;
+  }
+  private get hasDiscountCode(): FormControl {
+    return this.searchForm.controls.hasDiscountCode as FormControl;
   }
 
   private onSubmit() {
