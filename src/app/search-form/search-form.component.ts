@@ -1,7 +1,9 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import * as moment from 'moment';
 
 import { HttpService } from '../services/http.service';
+import { IDatePickerConfig } from 'ng2-date-picker';
 
 @Component({
   selector: 'app-search-form',
@@ -11,15 +13,26 @@ import { HttpService } from '../services/http.service';
 export class SearchFormComponent implements OnInit {
   @Output() searchFinished: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+
+  private readonly datePickerConfig: IDatePickerConfig = {
+    hideInputContainer: true,
+    format: "YYYY-MM-DD HH:mm",
+    locale: "ru",
+    showTwentyFourHours: true,
+    firstDayOfWeek: "mo",
+    min: moment()
+  }
+  private readonly requiredFieldMessage = "Это поле обязательное";
   private searchForm: FormGroup;
-  private readonly minAddressLength: number = 10;
 
   constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
     this.searchForm = new FormGroup({
-      pickUpAddress: new FormControl(null, [Validators.required, Validators.minLength(this.minAddressLength)]),
-      dropOffAddress: new FormControl(null, Validators.minLength(this.minAddressLength))
+      pickUpAddress: new FormControl(null, Validators.required),
+      dropOffAddress: new FormControl(null, Validators.required),
+      pickUpDate: new FormControl(null, Validators.required),
+      dropOffDate: new FormControl(null, Validators.required)
     })
   }
 
@@ -28,6 +41,12 @@ export class SearchFormComponent implements OnInit {
   }
   private get dropOffAddress(): FormControl {
     return this.searchForm.controls.dropOffAddress as FormControl;
+  }
+  private get pickUpDate(): FormControl {
+    return this.searchForm.controls.pickUpDate as FormControl;
+  }
+  private get dropOffDate(): FormControl {
+    return this.searchForm.controls.dropOffDate as FormControl;
   }
 
   private onSubmit() {

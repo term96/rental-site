@@ -3,25 +3,24 @@
     <label>
       <span>Адрес аренды</span>
       <input placeholder='Например, "New York"' formControlName="pickUpAddress" />
-      <span *ngIf="pickUpAddress.dirty && pickUpAddress.errors && pickUpAddress.errors.required" class="error">Это поле обязательное</span>
-      <span *ngIf="pickUpAddress.dirty && pickUpAddress.errors && pickUpAddress.errors.minlength" class="error">Адрес должен быть не меньше {{ minAddressLength }} символов</span>
+      <span *ngIf="pickUpAddress.dirty && pickUpAddress.invalid" class="error">{{ requiredFieldMessage }}</span>
     </label>
     <label>
       <span>Адрес возврата</span>
-      <input placeholder='Такой же, как адрес аренды' formControlName="dropOffAddress" />
-      <span *ngIf="dropOffAddress.dirty && dropOffAddress.invalid" class="error">Адрес должен быть не меньше {{ minAddressLength }} символов</span>
+      <input placeholder='Введите адрес' formControlName="dropOffAddress" />
+      <span *ngIf="dropOffAddress.dirty && dropOffAddress.invalid" class="error">{{ requiredFieldMessage }}</span>
     </label>
   </div>
   <div class="dates">
     <label>
       <span>Дата аренды</span>
-      <input type="date" value="{{ '2018-06-14' }}"/>
-      <input type="time" />
+      <input mode="daytime" theme="dp-material" formControlName="pickUpDate" [dpDayPicker]="datePickerConfig" [readonly]="true" placeholder="Выберите дату" />
+      <span *ngIf="pickUpDate.dirty && pickUpDate.invalid" class="error">{{ requiredFieldMessage }}</span>
     </label>
     <label>
       <span>Дата возврата</span>
-      <input type="date" />
-      <input type="time" />
+      <input mode="daytime" theme="dp-material" formControlName="dropOffDate" [dpDayPicker]="datePickerConfig" [readonly]="true" placeholder="Выберите дату" />
+      <span *ngIf="dropOffDate.dirty && dropOffDate.invalid" class="error">{{ requiredFieldMessage }}</span>
     </label>
   </div>
   <input class="submit" type="submit" value="Искать" />

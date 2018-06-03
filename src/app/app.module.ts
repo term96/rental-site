@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { DpDatePickerModule } from 'ng2-date-picker';
 
 import { AppComponent } from './app.component';
 import { HttpService } from './services/http.service';
@@ -18,6 +19,7 @@ import { SearchFormComponent } from './search-form/search-form.component';
   imports: [
     BrowserModule,
     CommonModule,
+    DpDatePickerModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule
