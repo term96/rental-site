@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { DpDatePickerModule } from 'ng2-date-picker';
 
 import { AppComponent } from './app.component';
+import { DataService } from './services/data.service';
 import { HttpService } from './services/http.service';
 import { RentalPageComponent } from './rental-page/rental-page.component';
 import { SearchFormComponent } from './search-form/search-form.component';
@@ -24,7 +25,7 @@ import { SearchFormComponent } from './search-form/search-form.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [HttpService],
+  providers: [DataService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

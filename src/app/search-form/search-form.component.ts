@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import * as moment from 'moment';
 
+import { DataService } from '../services/data.service';
 import { HttpService } from '../services/http.service';
 import { IDatePickerConfig } from 'ng2-date-picker';
 
@@ -25,7 +26,7 @@ export class SearchFormComponent implements OnInit {
   private readonly requiredFieldMessage = "Это поле обязательное";
   private searchForm: FormGroup;
 
-  constructor(private httpService: HttpService) {}
+  constructor(private dataService: DataService, private httpService: HttpService) {}
 
   ngOnInit(): void {
     this.searchForm = new FormGroup({
@@ -54,6 +55,8 @@ export class SearchFormComponent implements OnInit {
       this.showErrors();
       return;
     }
+
+    console.log(this.searchForm.value);
 
     this.httpService.searchCars(JSON.stringify(this.searchForm.value)).subscribe(
       data => {

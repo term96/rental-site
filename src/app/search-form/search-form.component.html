@@ -1,27 +1,54 @@
 <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" novalidate>
   <div class="addresses">
-    <label>
-      <span>Адрес аренды</span>
-      <input placeholder='Например, "New York"' formControlName="pickUpAddress" />
+    <div class="address">
+      <div class="label-wrapper"><label for="pick-up-address">Адрес аренды</label></div>
+      <input id="pick-up-address" placeholder='Например, "New York"' formControlName="pickUpAddress" />
       <span *ngIf="pickUpAddress.dirty && pickUpAddress.invalid" class="error">{{ requiredFieldMessage }}</span>
-    </label>
-    <label>
-      <span>Адрес возврата</span>
-      <input placeholder='Введите адрес' formControlName="dropOffAddress" />
+    </div>
+    <div class="address">
+        <div class="label-wrapper"><label for="drop-off-address">Адрес возврата</label></div>
+      <input id="drop-off-address" placeholder='Введите адрес' formControlName="dropOffAddress" />
       <span *ngIf="dropOffAddress.dirty && dropOffAddress.invalid" class="error">{{ requiredFieldMessage }}</span>
-    </label>
+    </div>
   </div>
   <div class="dates">
-    <label>
-      <span>Дата аренды</span>
-      <input mode="daytime" theme="dp-material" formControlName="pickUpDate" [dpDayPicker]="datePickerConfig" [readonly]="true" placeholder="Выберите дату" />
+    <div class="date">
+        <div class="label-wrapper"><label for="pick-up-date">Дата аренды</label></div>
+      <input id="pick-up-date" mode="daytime" theme="dp-material" formControlName="pickUpDate" [dpDayPicker]="datePickerConfig" [readonly]="true" placeholder="Выберите дату" />
       <span *ngIf="pickUpDate.dirty && pickUpDate.invalid" class="error">{{ requiredFieldMessage }}</span>
-    </label>
-    <label>
-      <span>Дата возврата</span>
-      <input mode="daytime" theme="dp-material" formControlName="dropOffDate" [dpDayPicker]="datePickerConfig" [readonly]="true" placeholder="Выберите дату" />
+    </div>
+    <div class="date">
+        <div class="label-wrapper"><label for="drop-off-date">Дата возврата</label></div>
+      <input id="drop-off-date" mode="daytime" theme="dp-material" formControlName="dropOffDate" [dpDayPicker]="datePickerConfig" [readonly]="true" placeholder="Выберите дату" />
       <span *ngIf="dropOffDate.dirty && dropOffDate.invalid" class="error">{{ requiredFieldMessage }}</span>
-    </label>
+    </div>
+  </div>
+  <div class="optional">
+    <div class="option">
+      <div class="label-wrapper"><label for="car-type">Тип автомобиля</label></div>
+      <select id="car-type">
+        <option disabled>Тип не выбран</option>
+        <option *ngFor="let type of dataService.getCarTypes()" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+    <div class="option">
+      <div class="label-wrapper"><label for="car-rental-company">Компания-арендодатель</label></div>
+      <select id="car-rental-company">
+        <option disabled>Компания не выбрана</option>
+        <option *ngFor="let type of dataService.getCarRentalCompanies()" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+    <div class="option">
+      <div class="label-wrapper"><label for="discount-code-toggler">Код скидки</label></div>
+      <select id="discount-code-toggler">
+        <option value="no">У меня нет кода</option>
+        <option value="yes">У меня есть код</option>
+      </select>
+    </div>
+    <div class="option">
+        <div class="label-wrapper"><label for="discount-code">Код</label></div>
+        <input id="discount-code" size="15" placeholder="Код" />
+      </div>
   </div>
   <input class="submit" type="submit" value="Искать" />
 </form>

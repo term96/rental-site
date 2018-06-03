@@ -4,22 +4,20 @@ form {
   text-align: center;
 }
 
-label {
-  display: inline-block;
-  margin: 0 10px;
-  width: 100%;
+.label-wrapper,
+span {
+  margin: 0.5em 0;
 }
 
 span {
   display: block;
-  margin: 0.5em 0;
 }
 
 span.error {
   color: #c00;
 }
 
-input {
+input, select {
   color: #777;
   font-family: inherit;
   font-size: inherit;
@@ -29,16 +27,26 @@ input {
   padding: 0.35em;
 }
 
-input:focus {
+input:focus,
+select:focus {
   border-color: red;
   outline: none;
 }
 
 .addresses,
-.dates {
+.dates,
+.optional {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.address,
+.date,
+.option {
+  display: inline-block;
+  margin: 0 10px;
+  width: 100%;
 }
 
 .addresses input {
@@ -73,8 +81,13 @@ input:focus {
     text-align: left;
   }
 
-  label {
+  .address,
+  .date {
     width: 364px;
+  }
+
+  .option {
+    width: auto;
   }
 
   .addresses input {
