@@ -33,22 +33,10 @@ select:focus {
   outline: none;
 }
 
-.addresses,
-.dates,
-.options {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
 .address,
 .date,
 .option {
-  margin: 0 10px;
+  display: inline-block;
   width: 100%;
 }
 
@@ -127,10 +115,12 @@ select:focus {
   .address,
   .date {
     width: 364px;
+    margin: 0 10px;
   }
 
   .option {
     width: auto;
+    margin: 0 10px;
   }
 
   .addresses input {
