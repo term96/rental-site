@@ -14,7 +14,6 @@ import { IDatePickerConfig } from 'ng2-date-picker';
 export class SearchFormComponent implements OnInit {
   @Output() searchFinished: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-
   private readonly datePickerConfig: IDatePickerConfig = {
     hideInputContainer: true,
     format: "YYYY-MM-DD HH:mm",
@@ -65,8 +64,6 @@ export class SearchFormComponent implements OnInit {
       this.showErrors();
       return;
     }
-
-    console.log(this.searchForm.value);
 
     this.httpService.searchCars(JSON.stringify(this.searchForm.value)).subscribe(
       data => {
