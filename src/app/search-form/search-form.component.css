@@ -36,7 +36,12 @@ select:focus {
 .addresses,
 .dates,
 .options {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
@@ -101,6 +106,7 @@ select:focus {
   color: #fff;
   border: none;
   box-shadow: none;
+  -webkit-transition: box-shadow 0.25s;
   transition: box-shadow 0.25s;
 }
 
